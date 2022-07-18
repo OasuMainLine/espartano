@@ -19,8 +19,8 @@
         },
 
         methods:{
-            clickNewsCategory(category){
-            this.$emit('clicknewscategory', category);
+            clickNewsCategory(name){
+            this.$emit('clicknewscategory', name);
         }
     }, 
     }

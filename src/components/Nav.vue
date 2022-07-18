@@ -21,10 +21,10 @@
                 </form>
                 <ul class="navbar-nav mb-lg-0 pt-3">
                     <li class=" nav-item">
-                        <a class="nav-link text-white nav-f " aria-current="page" data-bs-target="#modalInicioSesion" data-bs-toggle="modal">Iniciar Sesión</a>
+                        <a class="nav-link text-white nav-f pe-auto " aria-current="page" data-bs-target="#modalInicioSesion" data-bs-toggle="modal">Iniciar Sesión</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white btn-card-f" aria-current="page" data-bs-target="#modalCheckIn" data-bs-toggle="modal">Registrase</a>
+                        <a class="nav-link text-white btn-card-f pe-auto" aria-current="page" data-bs-target="#modalCheckIn" data-bs-toggle="modal">Registrase</a>
                     </li>
                 </ul>
             </div>

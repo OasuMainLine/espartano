@@ -7,7 +7,7 @@
                 <p class="card-d-f card-text">{{subtitle}}</p>
             </div>                  
             <div class="ps-3">
-                <button href="#" class="btn-card-f" v-on:click="clickNewsDetails(index)" data-bs-target="#descriptionModal" data-bs-toggle="modal">Mas información</button>
+                <button href="#" class="btn-card-f" v-on:click="clickNewsDetails(id)" data-bs-target="#descriptionModal" data-bs-toggle="modal">Mas información</button>
                 <i class="position-absolute end-0 pe-4 pt-2 far fa-heart"></i>
             </div>
         </div>
@@ -31,6 +31,9 @@
             },
             index:{
                 type: Number
+            },
+                id:{
+                type: Number
             }
         },
 
@@ -47,7 +50,7 @@
         },
 
         mounted(){
-            this.picture = this.image + "/tech?ramdom=" + Math.floor(Math.random()*30000);
+            this.picture = "http://noticiasLaravel.test/storage/imgs/"+this.image;
         },
     }
 </script>

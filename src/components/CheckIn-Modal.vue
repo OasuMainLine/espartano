@@ -23,27 +23,19 @@
                         <!-- catagorias -->
                         <div class="md-3">
                             <label for="formGroupExampleInput" class="form-label card-t-f">Escoja las categorias que desea ver</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label nav-f" for="flexCheckDefault">Deportes</label>
+                            
+                            
+                            
+                            <div class="form-check" v-for="(category) in categories" :key="category.id">
+                                <input name="category-cb" class="form-check-input" type="checkbox" :value="category.id" id="flexCheckDefault">
+                                <label class="form-check-label nav-f" for="flexCheckDefault">{{category.categories}}</label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label nav-f" for="flexCheckDefault">Ciencia y tecnologia</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label nav-f" for="flexCheckDefault">Salud</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label nav-f" for="flexCheckDefault">Entretenimiento</label>
-                            </div>
+                          
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <button type="submit" class="btn btn-primary" @click="showCategories">Registrarse</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
@@ -51,10 +43,26 @@
     </div>
 </template>
 
-<script>
-    export default{
-        
+<script setup>
+    import {ref} from 'vue';
+    import {getCategories} from '../lib/db';
+    let categories = ref([]);
+    
+    getCategories().then((data) => {
+            categories.value = data;
+    })
+
+
+    function showCategories(){
+        let checkboxes = document.querySelectorAll("[name=category-cb]:checked");
+        let categories = [];
+        checkboxes.forEach((cb) => {
+            categories.push(cb.value);
+        })
+        console.log(categories)
     }
+
+
 </script>
 
 <style lang="scss" scoped>

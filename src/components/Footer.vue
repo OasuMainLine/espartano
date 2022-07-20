@@ -2,19 +2,19 @@
     <footer class="text-center text-white" style="background-color: #801414">
         <ul class="nav justify-content-center pt-4">
             <li class="nav-item">
-                <a class="card-d-f nav-link text-white" aria-current="page" href="#">Sobre Nosotros</a>
+                <RouterLink class="card-d-f nav-link text-white" to="/about-us">Sobre Nosotros</RouterLink>
             </li>
             <li class="nav-item">
-                <a class="card-d-f nav-link text-white" href="#">Trabajos</a>
+                <RouterLink class="card-d-f nav-link text-white" to="/contact">Contacto</RouterLink>
             </li>
             <li class="nav-item">
-                <a class="card-d-f nav-link text-white" href="#">Desarrolladores</a>
+                 <RouterLink class="card-d-f nav-link text-white" to="/help">Ayuda</RouterLink>
             </li>
             <li class="nav-item">
-                <a class="card-d-f nav-link text-white" href="#">Terminos de servicio</a>
+                 <RouterLink class="card-d-f nav-link text-white" to="/developers">Desarrolladores</RouterLink>
             </li>
             <li class="nav-item">
-                <a class="card-d-f nav-link text-white" href="#">Soporte</a>
+                 <RouterLink class="card-d-f nav-link text-white" to="/termscondit">Términos y Condiciones</RouterLink>
             </li>
         </ul>
 

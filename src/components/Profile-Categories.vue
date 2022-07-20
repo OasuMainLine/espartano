@@ -1,51 +1,29 @@
 <template>
-    <div class="pt-3 row row-cols-1 row-cols-md-3 g-4">
-            <div>
-                <button class="btn-outline-primary card shadow category-card img-dep" data-bs-toggle="button" autocomplete="off" aria-pressed="true">
-                    <div class="card-body text-white">
-                        <h5 class="card-title">Deporte</h5>
-                        <p class="card-text">
-                            Noticias relacionadas al fútbol y otros deportes.
-                        </p>
-                    </div>
-                </button>
-            </div>
-            <div>
-                <button class="btn-outline-primary card shadow category-card img-sal" data-bs-toggle="button" autocomplete="off" aria-pressed="true">
-                    <div class="card-body text-white">
-                        <h5 class="card-title">Salud</h5>
-                        <p class="card-text">
-                            Noticias relacionadas a la salud y la medicina.
-                        </p>
-                    </div>
-                </button>
-            </div>
-            <div>
-                <button class="btn-outline-primary card shadow category-card img-tec" data-bs-toggle="button" autocomplete="off" aria-pressed="true">
-                    <div class="card-body text-white">
-                        <h5 class="card-title">Tecnología</h5>
-                        <p class="card-text">
-                            Noticias relacionadas a novedades teconológicas.
-                        </p>
-                    </div>
-                </button>
-            </div>
-            <div>
-                <button class="btn-outline-primary card shadow category-card img-ent" data-bs-toggle="button" autocomplete="off" aria-pressed="true">
-                    <div class="card-body text-white">
-                        <h5 class="card-title">Entretenimiento</h5>
-                        <p class="card-text">
-                            Noticias relacionadas al cine, la televisión y la música.
-                        </p>
-                    </div>
-                </button>
-            </div>
-        </div>
+                             
+        <div class="form-check" v-for="(category) in categories" :key="category.id">
+            <input name="category-cb" class="form-check-input" type="checkbox" :value="category.id" id="flexCheckDefault">
+            <label class="form-check-label nav-f" for="flexCheckDefault">{{category.categories}}</label>
+        </div>                  
+            
 </template>
 
-<script>
-    export default {
-        
+<script setup>
+    import {ref} from 'vue';
+    import {getCategories} from '../lib/db';
+    let categories = ref([]);
+    
+    getCategories().then((data) => {
+            categories.value = data;
+    })
+
+
+    function showCategories(){
+        let checkboxes = document.querySelectorAll("[name=category-cb]:checked");
+        let categories = [];
+        checkboxes.forEach((cb) => {
+            categories.push(cb.value);
+        })
+        console.log(categories)
     }
 </script>
 

@@ -44,7 +44,7 @@
             return{
                 selectedItem:0,
                 categories:[
-                    {id:1, name:'all', style:'btn-primary'}
+                    {id:1, name:'all'}
                 ],
                 news:[
                     { id: 101, title: '', subtitle:'', description:'', image: '../assets/imgs/acastro_210217_1777_passwords_0002.0.webp', available: true, date: '', category: [{
@@ -54,7 +54,9 @@
                         }], likes: 80, border:'border-warning' }
                 ],
                 all_news: [],
-                selected_news: [{title:'', category:'', description:'', image:'', date:''}]
+                newsInCategory: [],
+                selected_news: [{title:'', category:'', description:'', image:'', date:''}],
+
             }
         },
         mounted: function(){
@@ -63,7 +65,6 @@
             .then(response => response.json())
             .then(data=>{
 
-                console.log(data);
                 this.categories = data;
             });
 
@@ -88,13 +89,17 @@
                     this.news = newsInCategory;
                 }
             },
-            showNewsDetails(index, img){
+            showNewsDetails(index, img, categories){
                 fetch('http://noticiaslaravel.test/api/news/detail/'+index)
                 .then(response => response.json())
                 .then(data=>{
-
-                    console.log(data);
                     this.selected_news = data;
+                });
+
+                fetch('http://noticiaslaravel.test/api/news/related/'+index+categories)
+                .then(response => response.json())
+                .then(data=>{
+                    this.selected_news_related = data;
                 });
             },
         },

@@ -9,10 +9,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-white nav-f" aria-current="page" href="#">Contacto</a>
+                        <RouterLink class="nav-link active text-white nav-f" aria-current="page" to="/contact">Contacto</RouterLink>
                     </li>
                 </ul>
-                <RouterLink to="/perfil">Perfil</RouterLink>
+                <RouterLink class="nav-link active text-white nav-f" to="/perfil">Perfil</RouterLink>
                 <form class="d-flex" v-if="$route.path != '/perfil'">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <span class="input-group-text border-0" id="search-addon">
@@ -21,10 +21,10 @@
                 </form>
                 <ul class="navbar-nav mb-lg-0 pt-3">
                     <li class=" nav-item">
-                        <a class="nav-link text-white nav-f pe-auto " aria-current="page" data-bs-target="#modalInicioSesion" data-bs-toggle="modal">Iniciar Sesión</a>
+                        <a class="nav-link text-white nav-f pe-auto" aria-current="page" data-bs-target="#modalInicioSesion" data-bs-toggle="modal">Iniciar Sesión</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white btn-card-f pe-auto" aria-current="page" data-bs-target="#modalCheckIn" data-bs-toggle="modal">Registrase</a>
+                        <button class="nav-link text-white btn-card-f pe-auto" aria-current="page" data-bs-target="#modalCheckIn" data-bs-toggle="modal">Registrase</button>
                     </li>
                 </ul>
             </div>

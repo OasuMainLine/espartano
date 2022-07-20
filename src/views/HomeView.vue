@@ -98,7 +98,6 @@
                 .then(response => response.json())
                 .then(data=> {
                     this.related_news = data;
-                    console.log('puta prueba'+ this.related_news[0].categories_id);
                 })
             }
         },

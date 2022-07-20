@@ -4,6 +4,3 @@ export function getCategories(){
 
 }
 
-export function getNews(){
-
-}

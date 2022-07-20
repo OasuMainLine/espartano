@@ -21,7 +21,7 @@
       </div>
       <!-- Cards -->
 
-      <DetailsModal :title="selected_news[0].title" :category="selected_news[0].category" :image="'http://noticiasLaravel.test/storage/imgs/'+selected_news[0].image" :date="selected_news[0].created_at" :description="selected_news[0].description"></DetailsModal>
+      <DetailsModal :related_news="related_news" :title="selected_news[0].title" :category="selected_news[0].category" :image="'http://noticiasLaravel.test/storage/imgs/'+selected_news[0].image" :date="selected_news[0].created_at" :description="selected_news[0].description" ></DetailsModal>
 
       <login-modal/>
       <CheckInModal/>
@@ -44,18 +44,14 @@
             return{
                 selectedItem:0,
                 categories:[
-                    {id:1, name:'all'}
+                    {id:1, categories:''}
                 ],
                 news:[
-                    { id: 101, title: '', subtitle:'', description:'', image: '../assets/imgs/acastro_210217_1777_passwords_0002.0.webp', available: true, date: '', category: [{
-                        name: "Sports",
-                        id: "1",
-                        newsId: "1"
-                        }], likes: 80, border:'border-warning' }
+                    { id: 101, categories: 1, title: '', subtitle:'', description:'', image: '../assets/imgs/acastro_210217_1777_passwords_0002.0.webp', date: ''} 
                 ],
                 all_news: [],
-                newsInCategory: [],
-                selected_news: [{title:'', category:'', description:'', image:'', date:''}],
+                related_news: [],
+                selected_news: [{title:'', categories:'', description:'', image:'', date:''}],
 
             }
         },
@@ -89,19 +85,22 @@
                     this.news = newsInCategory;
                 }
             },
-            showNewsDetails(index, img, categories){
+            showNewsDetails(index, img,){
                 fetch('http://noticiaslaravel.test/api/news/detail/'+index)
                 .then(response => response.json())
                 .then(data=>{
                     this.selected_news = data;
                 });
-
-                fetch('http://noticiaslaravel.test/api/news/related/'+index+categories)
-                .then(response => response.json())
-                .then(data=>{
-                    this.selected_news_related = data;
-                });
             },
+
+            showRelatedNews(index, categories_id){
+                fetch('http://noticiaslaravel.test/api/news/related/' + index + '/' + categories_id)
+                .then(response => response.json())
+                .then(data=> {
+                    this.related_news = data;
+                    console.log('puta prueba'+ this.related_news[0].categories_id);
+                })
+            }
         },
     }
 </script>

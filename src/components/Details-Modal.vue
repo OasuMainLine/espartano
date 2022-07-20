@@ -20,9 +20,9 @@
 
                     <!-- cards-relacionadas -->
                     <h6 class="nab-f-2 pt-5">Noticias relacionadas</h6>
-                    <div class="col-lg-4">
-                        <div class="card h-100 w-100 shadow">
-                        <img class="card-img-top" :src="picture" :alt="title">
+                    <div class="col-lg-4" >
+                        <div v-for="(item,index) in related_news.slice(0,4)" :key="index" class="card h-100 w-100 shadow">
+                        <img class="card-img-top" :src="'http://noticiasLaravel.test/storage/imgs/'+image" :alt="title">
                             <div class="card-body">
                                 <h5 class="card-t-f card-title">{{title}}</h5>
                                 <p class="card-d-f card-text">{{subtitle}}</p>
@@ -64,7 +64,11 @@
             description:{
                 type: String,
                 default: 'default text'
+            },
+            related_news:{
+                type: Array,
             }
+       
         },
     }
 </script>
